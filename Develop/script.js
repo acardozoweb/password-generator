@@ -18,7 +18,7 @@ let useSpecial;
 let endResultPw = [];
 
 
-//////// FUNCTION TO GENERATE PASSWORD
+////////// FUNCTION TO GENERATE PASSWORD
 
 // ask how many characters to use
 function generatePassword() {
@@ -45,7 +45,8 @@ function generatePassword() {
     useSpecial = confirm ("And how about special characters/punctuation?")
   }
 
-  // DETERMINE WHICH ARRAYS TO USE
+
+  ///// DETERMINE WHICH ARRAYS TO USE
 
   // if all 4 character types are chosen
   if (useLowCase && useUpCase && useNumbers && useSpecial) {
@@ -86,19 +87,20 @@ function generatePassword() {
     endResultPw = special;
   }
 
-  console.log(endResultPw)
 
+  ///// RANDOM SELECTION OF PASSWORD CHARACTERS
 
+  // display pw as a string
+  let password = "";
 
+  // generate pw by looping through selected arrays
+  for (var i = 0; i < pwLength; i++) {
+    password = password + endResultPw[Math.floor(Math.random() * endResultPw.length)];
+  }
+  return password;
 
+}; ////////// END OF "GENERATE" FUNCTION
 
-
-
-} ///// END OF "GENERATE" FUNCTION
-
-
-
-//////// STARTER CODE BELOW 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
