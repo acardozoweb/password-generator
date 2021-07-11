@@ -18,7 +18,9 @@ let useSpecial;
 let endResultPw = [];
 
 
-// ASK USER HOW MANY CHARACTERS
+//////// FUNCTION TO GENERATE PASSWORD
+
+// ask how many characters to use
 function generatePassword() {
   pwLength = window.prompt("Your password can have between 8 and 128 characters. Enter the number you would like.");
 
@@ -34,13 +36,65 @@ function generatePassword() {
   useNumbers = confirm("Should it include numbers?");
   useSpecial = confirm ("And how about special characters/punctuation?")
 
+  // if no character types are chosen
+  while (useLowCase === false && useUpCase === false && useNumbers === false && useSpecial == false) {
+    window.alert("Please choose at least one type of character to use.");
+    useLowCase = confirm("Do you want to use lower case letter?");
+    useUpCase = confirm("How about upper case letters?");
+    useNumbers = confirm("Should it include numbers?");
+    useSpecial = confirm ("And how about special characters/punctuation?")
+  }
+
+  // DETERMINE WHICH ARRAYS TO USE
+
+  // if all 4 character types are chosen
+  if (useLowCase && useUpCase && useNumbers && useSpecial) {
+    endResultPw = lowCase.concat(upCase, numbers, special);
+
+  // if 3 types are chosen
+  } else if (useLowCase && useUpCase && useNumbers) {
+    endResultPw = lowCase.concat(upCase, numbers);  
+  } else if (useLowCase && useUpCase && useSpecial) {
+    endResultPw = lowCase.concact(upCase, special);
+  } else if (useUpCase && useNumbers && useSpecial) {
+    endResultPw = upCase.concat(numbers, special);
+  } else if (useLowCase && useNumbers && useSpecial) {
+    endResultPw = lowCase.concat(numbers, special);
   
+  // if 2 types are chosen
+  } else if (useLowCase && useUpCase) {
+    endResultPw = lowCase.concat(upCase);
+  } else if (useLowCase && useNumbers) {
+    endResultPw = lowCase.concat(numbers);
+  } else if (useLowCase && useSpecial) {
+    endResultPw = lowCase.concat(special);
+  } else if (useUpCase && useNumbers) {
+    endResultPw = upCase.concat(numbers);
+  } else if (useUpCase && useSpecial) {
+    endResultPw = upCase.concat(special);
+  } else if (useNumbers && useSpecial) {
+    endResultPw = numbers.concat(special);
+
+  // if 1 is chosen
+  } else if (useLowCase) {
+    endResultPw = lowCase;
+  } else if (useUpCase) {
+    endResultPw = upCase;
+  } else if (useNumbers) {
+    endResultPw = numbers;
+  } else if (useSpecial) {
+    endResultPw = special;
+  }
+
+  console.log(endResultPw)
 
 
 
 
 
-}
+
+
+} ///// END OF "GENERATE" FUNCTION
 
 
 
