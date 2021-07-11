@@ -15,9 +15,36 @@ let useNumbers;
 let useSpecial;
 
 // GENERATED PASSWORD
-let generatedPw = [];
+let endResultPw = [];
 
 
+// ASK USER HOW MANY CHARACTERS
+function generatePassword() {
+  pwLength = window.prompt("Your password can have between 8 and 128 characters. Enter the number you would like.");
+
+  // prompt for invalid entry
+  while (pwLength < 8 || pwLength > 128) {
+    window.alert("That was not a valid entry, please try again.");
+    pwLength = window.prompt("Your password can have between 8 and 128 characters. Enter the number you would like.");
+  }
+
+  // prompts for character types to use
+  useLowCase = confirm("Do you want to use lower case letter?");
+  useUpCase = confirm("How about upper case letters?");
+  useNumbers = confirm("Should it include numbers?");
+  useSpecial = confirm ("And how about special characters/punctuation?")
+
+  
+
+
+
+
+
+}
+
+
+
+//////// STARTER CODE BELOW 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
